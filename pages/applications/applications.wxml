@@ -1,0 +1,51 @@
+<!--pages/applications/applications.wxml-->
+<view class="container">
+  <view wx:if="{{!hasLogin}}" class="login-tip">
+    <image class="tip-icon" src="/images/lock.png" mode="aspectFit"></image>
+    <text class="tip-text">请先登录查看投递记录</text>
+    <button class="login-btn" bindtap="goToLogin">去登录</button>
+  </view>
+
+  <view wx:else>
+    <view class="tabs">
+      <view 
+        class="tab-item {{activeTab === index ? 'active' : ''}}" 
+        wx:for="{{tabs}}" 
+        wx:key="*this"
+        bindtap="onTabChange"
+        data-index="{{index}}"
+      >
+        {{item}}
+      </view>
+    </view>
+
+    <view wx:if="{{applications.length === 0}}" class="empty-tip">
+      <image class="empty-icon" src="/images/empty.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无投递记录</text>
+    </view>
+
+    <view wx:else class="application-list">
+      <view 
+        class="application-item card" 
+        wx:for="{{applications}}" 
+        wx:key="id"
+        bindtap="goToJobDetail"
+        data-id="{{item.jobId}}"
+      >
+        <view class="job-header">
+          <text class="job-title">{{item.job.position}}</text>
+          <view class="status-badge {{item.status === 0 ? 'pending' : item.status === 1 ? 'viewed' : item.status === 2 ? 'interested' : 'rejected'}}">
+            {{item.status === 0 ? '待处理' : item.status === 1 ? '已查看' : item.status === 2 ? '感兴趣' : '不合适'}}
+          </view>
+        </view>
+        <view class="job-info">
+          <text class="company-name">{{item.job.company}}</text>
+          <text class="job-salary text-highlight">{{item.job.salary}}</text>
+        </view>
+        <view class="job-footer">
+          <text class="submit-time text-secondary">投递于 {{item.submitTime}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

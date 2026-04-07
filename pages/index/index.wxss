@@ -1,0 +1,168 @@
+/* pages/index/index.wxss */
+.banner {
+  height: 300rpx;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-title {
+  position: absolute;
+  bottom: 40rpx;
+  left: 30rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.3);
+}
+
+.quick-entry {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 20rpx;
+  margin: 0 20rpx 20rpx;
+}
+
+.entry-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.entry-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  margin-bottom: 16rpx;
+}
+
+.entry-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.section {
+  margin: 0 20rpx 20rpx;
+  padding: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.more {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.company-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.company-logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.company-name {
+  font-size: 26rpx;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.company-count {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.job-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.job-item:last-child {
+  border-bottom: none;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.job-position {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.job-salary {
+  font-size: 28rpx;
+  color: #ff4d4f;
+  font-weight: 500;
+}
+
+.job-company {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.job-info {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.job-tag {
+  font-size: 22rpx;
+  color: #666;
+  background: #f5f5f5;
+  padding: 6rpx 16rpx;
+  border-radius: 4rpx;
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.job-tags .tag {
+  margin: 0;
+}

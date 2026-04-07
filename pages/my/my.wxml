@@ -1,0 +1,88 @@
+<!--pages/my/my.wxml-->
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-section">
+    <view class="user-info" wx:if="{{hasLogin}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"/>
+      <view class="user-detail">
+        <text class="nickname">{{userInfo.nickName}}</text>
+        <text class="user-id">ID: 10086</text>
+      </view>
+      <view class="logout-btn" bindtap="logout">退出</view>
+    </view>
+    <view class="user-info" wx:else>
+      <view class="avatar default-avatar">👤</view>
+      <view class="user-detail">
+        <text class="nickname">未登录</text>
+        <text class="user-tip">点击登录查看更多信息</text>
+      </view>
+      <button class="login-btn" bindtap="login">登录</button>
+    </view>
+  </view>
+
+  <!-- 数据统计 -->
+  <view class="stats-section card" wx:if="{{hasLogin}}">
+    <view class="stat-item" bindtap="goToApplications">
+      <text class="stat-num">{{stats.applied}}</text>
+      <text class="stat-label">投递记录</text>
+    </view>
+    <view class="stat-item" bindtap="goToCollections">
+      <text class="stat-num">{{stats.collected}}</text>
+      <text class="stat-label">我的收藏</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.viewed}}</text>
+      <text class="stat-label">浏览记录</text>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-section">
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToApplications">
+        <view class="menu-icon" style="background: #e6f7ff;">📋</view>
+        <text class="menu-text">我的投递</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="goToCollections">
+        <view class="menu-icon" style="background: #fff7e6;">⭐</view>
+        <text class="menu-text">我的收藏</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="goToResume">
+        <view class="menu-icon" style="background: #f6ffed;">📄</view>
+        <text class="menu-text">我的简历</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+
+    <view class="menu-group">
+      <view class="menu-item" bindtap="goToSettings">
+        <view class="menu-icon" style="background: #f0f5ff;">⚙️</view>
+        <text class="menu-text">设置</text>
+        <text class="arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="goToAbout">
+        <view class="menu-icon" style="background: #f9f0ff;">ℹ️</view>
+        <text class="menu-text">关于我们</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+
+    <button class="share-btn" open-type="share">
+      <view class="menu-item" style="border: none;">
+        <view class="menu-icon" style="background: #fff2f0;">📤</view>
+        <text class="menu-text">分享给好友</text>
+        <text class="arrow">></text>
+      </view>
+    </button>
+  </view>
+
+  <!-- 客服按钮 -->
+  <view class="service-section">
+    <button class="service-btn" open-type="contact">
+      <text class="service-icon">💬</text>
+      <text class="service-text">联系客服</text>
+    </button>
+  </view>
+</view>

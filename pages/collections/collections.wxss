@@ -1,0 +1,128 @@
+/* pages/collections/collections.wxss */
+.container {
+  min-height: 100vh;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.login-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.tip-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 40rpx;
+}
+
+.login-btn {
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #1890ff;
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.empty-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.collection-list {
+  padding-bottom: 20rpx;
+}
+
+.collection-item {
+  margin-bottom: 20rpx;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.job-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.job-salary {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-left: 20rpx;
+}
+
+.job-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.company-name {
+  font-size: 28rpx;
+  color: #666;
+  margin-right: 20rpx;
+}
+
+.job-location {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16rpx;
+}
+
+.job-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.collect-time {
+  font-size: 24rpx;
+}
+
+.remove-btn {
+  padding: 8rpx 24rpx;
+  background-color: #fff;
+  color: #ff4d4f;
+  border: 1rpx solid #ff4d4f;
+  border-radius: 4rpx;
+  font-size: 24rpx;
+}

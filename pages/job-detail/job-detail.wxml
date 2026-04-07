@@ -1,0 +1,79 @@
+<!--pages/job-detail/job-detail.wxml-->
+<view class="container" wx:if="{{job}}">
+  <!-- 职位头部信息 -->
+  <view class="job-header card">
+    <view class="job-title-wrap">
+      <text class="job-position">{{job.position}}</text>
+      <text class="job-salary">{{job.salary}}</text>
+    </view>
+    <view class="job-tags">
+      <text class="tag">{{job.location}}</text>
+      <text class="tag">{{job.experience}}</text>
+      <text class="tag">{{job.education}}</text>
+    </view>
+    <view class="job-time">发布时间：{{job.createTime}}</view>
+  </view>
+
+  <!-- 公司信息 -->
+  <view class="company-section card">
+    <view class="section-title">公司信息</view>
+    <view class="company-info">
+      <image class="company-logo" src="https://picsum.photos/100/100?random={{job.id}}"/>
+      <view class="company-detail">
+        <text class="company-name">{{job.company}}</text>
+        <text class="company-desc">互联网 / 上市公司 / 10000人以上</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 职位描述 -->
+  <view class="section card">
+    <view class="section-title">职位描述</view>
+    <view class="section-content">{{job.description}}</view>
+  </view>
+
+  <!-- 岗位要求 -->
+  <view class="section card">
+    <view class="section-title">岗位要求</view>
+    <view class="requirement-list">
+      <view class="requirement-item" wx:for="{{job.requirements}}" wx:key="*this">
+        <text class="dot">•</text>
+        <text class="requirement-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 公司福利 -->
+  <view class="section card">
+    <view class="section-title">公司福利</view>
+    <view class="welfare-list">
+      <view class="welfare-item" wx:for="{{job.tags}}" wx:key="*this">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部占位 -->
+  <view class="bottom-placeholder"></view>
+</view>
+
+<!-- 底部操作栏 -->
+<view class="bottom-bar" wx:if="{{job}}">
+  <view class="action-btns">
+    <view class="action-btn" bindtap="collectJob">
+      <text class="btn-icon">⭐</text>
+      <text class="btn-text">收藏</text>
+    </view>
+    <view class="action-btn" bindtap="contactHR">
+      <text class="btn-icon">💬</text>
+      <text class="btn-text">咨询</text>
+    </view>
+  </view>
+  <button 
+    class="submit-btn {{hasApplied ? 'disabled' : ''}}" 
+    bindtap="goToSubmit"
+    disabled="{{hasApplied}}"
+  >
+    {{hasApplied ? '已投递' : '立即投递'}}
+  </button>
+</view>

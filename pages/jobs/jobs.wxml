@@ -1,0 +1,95 @@
+<!--pages/jobs/jobs.wxml-->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrap">
+      <icon type="search" size="16" class="search-icon"/>
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="搜索职位或公司" 
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+      />
+    </view>
+  </view>
+
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-item {{activeFilter === 'location' ? 'active' : ''}}" bindtap="toggleFilter" data-type="location">
+      <text>{{filterLocation || '工作地点'}}</text>
+      <text class="arrow">▼</text>
+    </view>
+    <view class="filter-item {{activeFilter === 'experience' ? 'active' : ''}}" bindtap="toggleFilter" data-type="experience">
+      <text>{{filterExperience || '工作经验'}}</text>
+      <text class="arrow">▼</text>
+    </view>
+    <view class="filter-item">
+      <text>薪资范围</text>
+      <text class="arrow">▼</text>
+    </view>
+    <view class="filter-item">
+      <text>更多筛选</text>
+      <text class="arrow">▼</text>
+    </view>
+  </view>
+
+  <!-- 筛选下拉菜单 -->
+  <view class="filter-dropdown" wx:if="{{activeFilter === 'location'}}">
+    <view 
+      class="filter-option {{filterLocation === (item === '全部' ? '' : item) ? 'selected' : ''}}" 
+      wx:for="{{locations}}" 
+      wx:key="*this"
+      bindtap="onLocationTap"
+      data-value="{{item}}"
+    >
+      {{item}}
+    </view>
+  </view>
+
+  <view class="filter-dropdown" wx:if="{{activeFilter === 'experience'}}">
+    <view 
+      class="filter-option {{filterExperience === (item === '全部' ? '' : item) ? 'selected' : ''}}" 
+      wx:for="{{experiences}}" 
+      wx:key="*this"
+      bindtap="onExperienceTap"
+      data-value="{{item}}"
+    >
+      {{item}}
+    </view>
+  </view>
+
+  <!-- 遮罩层 -->
+  <view class="mask" wx:if="{{activeFilter}}" bindtap="toggleFilter" data-type=""></view>
+
+  <!-- 职位列表 -->
+  <view class="job-list">
+    <view class="job-item card" wx:for="{{filteredJobs}}" wx:key="id" bindtap="goToJobDetail" data-id="{{item.id}}">
+      <view class="job-main">
+        <view class="job-title-row">
+          <text class="job-position">{{item.position}}</text>
+          <text class="job-salary">{{item.salary}}</text>
+        </view>
+        <view class="job-company-row">
+          <text class="job-company">{{item.company}}</text>
+          <text class="job-time">{{item.createTime}}</text>
+        </view>
+        <view class="job-info-row">
+          <text class="info-tag">{{item.location}}</text>
+          <text class="info-tag">{{item.experience}}</text>
+          <text class="info-tag">{{item.education}}</text>
+        </view>
+      </view>
+      <view class="job-tags">
+        <text class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{filteredJobs.length === 0}}">
+    <view class="empty-icon">🔍</view>
+    <text class="empty-text">没有找到相关职位</text>
+    <text class="empty-tip">换个关键词试试吧</text>
+  </view>
+</view>

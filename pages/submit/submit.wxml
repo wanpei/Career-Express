@@ -1,0 +1,130 @@
+<!--pages/submit/submit.wxml-->
+<view class="container">
+  <!-- 职位信息 -->
+  <view class="job-card" wx:if="{{job}}">
+    <view class="job-header">
+      <text class="job-position">{{job.position}}</text>
+      <text class="job-salary">{{job.salary}}</text>
+    </view>
+    <view class="job-company">{{job.company}}</view>
+    <view class="job-info">
+      <text class="info-tag">{{job.location}}</text>
+      <text class="info-tag">{{job.experience}}</text>
+      <text class="info-tag">{{job.education}}</text>
+    </view>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="form-section">
+    <view class="section-title">基本信息</view>
+    
+    <view class="form-item">
+      <text class="label required">姓名</text>
+      <input 
+        type="text" 
+        placeholder="请输入您的姓名" 
+        value="{{form.name}}"
+        data-field="name"
+        bindinput="onInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="label required">手机号</text>
+      <input 
+        type="number" 
+        placeholder="请输入您的手机号" 
+        value="{{form.phone}}"
+        data-field="phone"
+        bindinput="onInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="label required">邮箱</text>
+      <input 
+        type="text" 
+        placeholder="请输入您的邮箱" 
+        value="{{form.email}}"
+        data-field="email"
+        bindinput="onInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="label">工作年限</text>
+      <picker bindchange="onExperienceChange" value="0" range="{{experiences}}">
+        <view class="picker-value {{form.experience ? '' : 'placeholder'}}">
+          {{form.experience || '请选择工作年限'}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="label">当前公司</text>
+      <input 
+        type="text" 
+        placeholder="请输入当前所在公司" 
+        value="{{form.currentCompany}}"
+        data-field="currentCompany"
+        bindinput="onInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="label">期望薪资</text>
+      <picker bindchange="onSalaryChange" value="0" range="{{salaries}}">
+        <view class="picker-value {{form.expectedSalary ? '' : 'placeholder'}}">
+          {{form.expectedSalary || '请选择期望薪资'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 自我介绍 -->
+  <view class="form-section">
+    <view class="section-title">自我介绍</view>
+    <textarea 
+      class="intro-textarea"
+      placeholder="简单介绍一下自己，让HR更好地了解你..."
+      maxlength="500"
+      value="{{form.introduction}}"
+      data-field="introduction"
+      bindinput="onInput"
+    />
+    <view class="word-count">{{form.introduction.length || 0}}/500</view>
+  </view>
+
+  <!-- 简历附件 -->
+  <view class="form-section">
+    <view class="section-title">简历附件</view>
+    <view class="file-upload" wx:if="{{files.length === 0}}" bindtap="chooseFile">
+      <view class="upload-icon">📎</view>
+      <text class="upload-text">点击上传简历（PDF/Word）</text>
+      <text class="upload-tip">支持 .pdf, .doc, .docx 格式</text>
+    </view>
+    <view class="file-item" wx:else>
+      <view class="file-info">
+        <text class="file-icon">📄</text>
+        <view class="file-detail">
+          <text class="file-name">{{files[0].name}}</text>
+          <text class="file-size">{{files[0].size > 1024 ? files[0].size/1024 + 'KB' : files[0].size + 'B'}}</text>
+        </view>
+      </view>
+      <view class="file-delete" bindtap="removeFile">×</view>
+    </view>
+  </view>
+
+  <!-- 提示信息 -->
+  <view class="tips">
+    <text class="tip-text">提示：请确保填写的信息真实有效，虚假信息将影响您的求职信誉</text>
+  </view>
+
+  <!-- 底部占位 -->
+  <view class="bottom-placeholder"></view>
+</view>
+
+<!-- 底部提交按钮 -->
+<view class="bottom-bar">
+  <button class="submit-btn" bindtap="submit">确认投递</button>
+</view>

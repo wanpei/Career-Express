@@ -1,0 +1,47 @@
+<!--pages/collections/collections.wxml-->
+<view class="container">
+  <view wx:if="{{!hasLogin}}" class="login-tip">
+    <image class="tip-icon" src="/images/lock.png" mode="aspectFit"></image>
+    <text class="tip-text">请先登录查看收藏</text>
+    <button class="login-btn" bindtap="goToLogin">去登录</button>
+  </view>
+
+  <view wx:else>
+    <view wx:if="{{collections.length === 0}}" class="empty-tip">
+      <image class="empty-icon" src="/images/empty.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无收藏</text>
+    </view>
+
+    <view wx:else class="collection-list">
+      <view 
+        class="collection-item card" 
+        wx:for="{{collections}}" 
+        wx:key="id"
+        bindtap="goToJobDetail"
+        data-id="{{item.jobId}}"
+      >
+        <view class="job-header">
+          <text class="job-title">{{item.job.position}}</text>
+          <text class="job-salary text-highlight">{{item.job.salary}}</text>
+        </view>
+        <view class="job-info">
+          <text class="company-name">{{item.job.company}}</text>
+          <text class="job-location">{{item.job.location}}</text>
+        </view>
+        <view class="job-tags">
+          <text class="tag" wx:for="{{item.job.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+        </view>
+        <view class="job-footer">
+          <text class="collect-time text-secondary">收藏于 {{item.collectTime}}</text>
+          <view 
+            class="remove-btn" 
+            catchtap="removeCollection" 
+            data-id="{{item.id}}"
+          >
+            取消收藏
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

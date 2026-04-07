@@ -1,0 +1,180 @@
+/* pages/jobs/jobs.wxss */
+.search-bar {
+  padding: 20rpx;
+  background: #fff;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 32rpx;
+  padding: 16rpx 24rpx;
+}
+
+.search-icon {
+  margin-right: 16rpx;
+  color: #999;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.filter-bar {
+  display: flex;
+  background: #fff;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+  z-index: 100;
+}
+
+.filter-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.filter-item.active {
+  color: #1890ff;
+}
+
+.filter-item .arrow {
+  font-size: 20rpx;
+  margin-left: 8rpx;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: 180rpx;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 99;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.1);
+}
+
+.filter-option {
+  padding: 24rpx 30rpx;
+  font-size: 28rpx;
+  color: #333;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.filter-option.selected {
+  color: #1890ff;
+  background: #e6f7ff;
+}
+
+.mask {
+  position: fixed;
+  top: 180rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 98;
+}
+
+.job-list {
+  padding: 20rpx;
+}
+
+.job-item {
+  margin-bottom: 20rpx;
+}
+
+.job-main {
+  margin-bottom: 16rpx;
+}
+
+.job-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.job-position {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.job-salary {
+  font-size: 30rpx;
+  color: #ff4d4f;
+  font-weight: 500;
+}
+
+.job-company-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.job-company {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.job-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.job-info-row {
+  display: flex;
+  gap: 12rpx;
+}
+
+.info-tag {
+  font-size: 24rpx;
+  color: #666;
+  background: #f5f5f5;
+  padding: 8rpx 16rpx;
+  border-radius: 4rpx;
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.job-tags .tag {
+  margin: 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 40rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.empty-tip {
+  font-size: 26rpx;
+  color: #999;
+}

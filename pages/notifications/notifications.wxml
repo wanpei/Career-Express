@@ -1,0 +1,44 @@
+<!--pages/notifications/notifications.wxml-->
+<view class="container">
+  <view wx:if="{{!hasLogin}}" class="login-tip">
+    <image class="tip-icon" src="/images/lock.png" mode="aspectFit"></image>
+    <text class="tip-text">请先登录查看消息</text>
+    <button class="login-btn" bindtap="goToLogin">去登录</button>
+  </view>
+
+  <view wx:else>
+    <view class="tabs">
+      <view 
+        class="tab-item {{activeTab === index ? 'active' : ''}}" 
+        wx:for="{{tabs}}" 
+        wx:key="*this"
+        bindtap="onTabChange"
+        data-index="{{index}}"
+      >
+        {{item}}
+      </view>
+    </view>
+
+    <view wx:if="{{notifications.length === 0}}" class="empty-tip">
+      <image class="empty-icon" src="/images/empty.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无消息</text>
+    </view>
+
+    <view wx:else class="notification-list">
+      <view 
+        class="notification-item {{!item.isRead ? 'unread' : ''}}" 
+        wx:for="{{notifications}}" 
+        wx:key="id"
+        bindtap="markAsRead"
+        data-id="{{item.id}}"
+      >
+        <view class="notification-header">
+          <view class="notification-title">{{item.title}}</view>
+          <view class="notification-time text-secondary">{{item.time}}</view>
+        </view>
+        <view class="notification-content">{{item.content}}</view>
+        <view wx:if="{{!item.isRead}}" class="unread-dot"></view>
+      </view>
+    </view>
+  </view>
+</view>

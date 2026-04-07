@@ -1,0 +1,70 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 轮播图 -->
+  <swiper class="banner" indicator-dots autoplay circular interval="3000">
+    <swiper-item wx:for="{{banners}}" wx:key="id" bindtap="onBannerTap" data-id="{{item.id}}">
+      <image src="{{item.image}}" mode="aspectFill" class="banner-img"/>
+      <view class="banner-title">{{item.title}}</view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 快速入口 -->
+  <view class="quick-entry card">
+    <view class="entry-item" bindtap="goToJobs">
+      <view class="entry-icon" style="background: #e6f7ff;">📋</view>
+      <text class="entry-text">全部职位</text>
+    </view>
+    <view class="entry-item" bindtap="goToJobs">
+      <view class="entry-icon" style="background: #fff7e6;">🔥</view>
+      <text class="entry-text">热门推荐</text>
+    </view>
+    <view class="entry-item" bindtap="goToJobs">
+      <view class="entry-icon" style="background: #f6ffed;">⭐</view>
+      <text class="entry-text">最新发布</text>
+    </view>
+    <view class="entry-item" bindtap="goToJobs">
+      <view class="entry-icon" style="background: #fff2f0;">💼</view>
+      <text class="entry-text">我的投递</text>
+    </view>
+  </view>
+
+  <!-- 热门企业 -->
+  <view class="section card">
+    <view class="section-header">
+      <text class="section-title">热门企业</text>
+      <text class="more" bindtap="goToJobs">更多 ></text>
+    </view>
+    <view class="company-list">
+      <view class="company-item" wx:for="{{companies}}" wx:key="id" bindtap="onCompanyTap" data-name="{{item.name}}">
+        <image src="{{item.logo}}" class="company-logo"/>
+        <text class="company-name">{{item.name}}</text>
+        <text class="company-count">{{item.count}}个职位</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门职位 -->
+  <view class="section card">
+    <view class="section-header">
+      <text class="section-title">热门职位</text>
+      <text class="more" bindtap="goToJobs">更多 ></text>
+    </view>
+    <view class="job-list">
+      <view class="job-item" wx:for="{{hotJobs}}" wx:key="id" bindtap="goToJobDetail" data-id="{{item.id}}">
+        <view class="job-header">
+          <text class="job-position">{{item.position}}</text>
+          <text class="job-salary">{{item.salary}}</text>
+        </view>
+        <view class="job-company">{{item.company}}</view>
+        <view class="job-info">
+          <text class="job-tag">{{item.location}}</text>
+          <text class="job-tag">{{item.experience}}</text>
+          <text class="job-tag">{{item.education}}</text>
+        </view>
+        <view class="job-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
